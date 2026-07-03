@@ -1,0 +1,8 @@
+debug: true
+
+game:
+  width: 1280
+  height: 720
+
+adb:
+  auto_connect: true
