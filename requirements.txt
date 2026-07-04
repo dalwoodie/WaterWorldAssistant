@@ -2,3 +2,5 @@ adbutils
 Pillow
 PyYAML
 loguru
+opencv-python
+numpy
