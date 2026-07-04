@@ -19,6 +19,10 @@ def main():
 
     ctx.task_manager.run()
 
+    scene = ctx.scene.detect()
+
+    ctx.logger.info(f"当前Scene：{scene.name}")
+
 
 if __name__ == "__main__":
     main()

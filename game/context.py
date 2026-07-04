@@ -4,6 +4,7 @@ from core.logger.logger import logger
 from core.resource.manager import ResourceManager
 
 from game.tasks import TaskManager
+from game.scene import SceneManager
 
 
 class GameContext:
@@ -21,6 +22,8 @@ class GameContext:
         self.resource = ResourceManager()
 
         self.task_manager = TaskManager()
+
+        self.scene = SceneManager(self)
 
         self.device = None
 
