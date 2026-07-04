@@ -1,4 +1,4 @@
-from adbutils import adb
+from core.adb.adapter import ADBAdapter
 
 from core.adb.detector import DeviceDetector
 from core.adb.device import Device
@@ -9,7 +9,7 @@ class DeviceManager:
 
     def __init__(self):
 
-        self.detector = DeviceDetector()
+        self.adapter = ADBAdapter()
 
     def connect(self):
 
@@ -35,6 +35,6 @@ class DeviceManager:
             f"自动选择：{best.serial}"
         )
 
-        adb_device = adb.device(best.serial)
+        adb_device = self.adapter.get_device(best.serial)
 
         return Device(adb_device)

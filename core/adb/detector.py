@@ -1,9 +1,13 @@
-from adbutils import adb
+from core.adb.adapter import ADBAdapter
 
 from core.adb.models import DeviceInfo
 
 
 class DeviceDetector:
+
+    def __init__(self):
+
+        self.adapter = ADBAdapter()
     """
     扫描并排序ADB设备
     """
@@ -11,7 +15,7 @@ class DeviceDetector:
     def scan(self) -> list[DeviceInfo]:
         result = []
 
-        for device in adb.device_list():
+        for device in self.adapter.list_devices():
 
             serial = device.serial
 
