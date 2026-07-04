@@ -12,12 +12,11 @@ def main():
     )
 
     device.screenshot(
-        "resources/screenshots/test.png"
+        ctx.resource.screenshot("test")
     )
 
     ctx.logger.info("截图完成")
 
 
 if __name__ == "__main__":
-
     main()

@@ -1,6 +1,7 @@
 from core.adb.manager import DeviceManager
 from core.config.manager import ConfigManager
 from core.logger.logger import logger
+from core.resource.manager import ResourceManager
 
 
 class GameContext:
@@ -14,6 +15,8 @@ class GameContext:
         self.config = ConfigManager()
 
         self.device_manager = DeviceManager()
+
+        self.resource = ResourceManager()
 
         self.device = None
 
