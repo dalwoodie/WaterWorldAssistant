@@ -1,17 +1,21 @@
+from core.adb.manager import DeviceManager
 from core.logger.logger import logger
-from core.config.manager import ConfigManager
 
 
 def main():
 
-    logger.info("WaterWorldAssistant Start")
+    logger.info("WWA Start")
 
-    config = ConfigManager()
+    manager = DeviceManager()
+
+    device = manager.connect()
 
     logger.info(
-        f"Game Resolution: "
-        f'{config.get("game","width")}x'
-        f'{config.get("game","height")}'
+        f"当前设备：{device.serial}"
+    )
+
+    device.screenshot(
+        "resources/screenshots/test.png"
     )
 
 
