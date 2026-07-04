@@ -1,5 +1,4 @@
 from core.adb.adapter import ADBAdapter
-
 from core.adb.models import DeviceInfo
 
 
@@ -8,16 +7,14 @@ class DeviceDetector:
     def __init__(self):
 
         self.adapter = ADBAdapter()
-    """
-    扫描并排序ADB设备
-    """
 
-    def scan(self) -> list[DeviceInfo]:
+    def scan(self):
+
         result = []
 
-        for device in self.adapter.list_devices():
+        for adb_device in self.adapter.list_devices():
 
-            serial = device.serial
+            serial = adb_device.serial
 
             emulator = "Unknown"
 
@@ -37,6 +34,7 @@ class DeviceDetector:
 
             result.append(
                 DeviceInfo(
+                    adb_device=adb_device,
                     serial=serial,
                     emulator=emulator,
                     score=score,
@@ -44,7 +42,7 @@ class DeviceDetector:
             )
 
         result.sort(
-            key=lambda x: x.score,
+            key=lambda d: d.score,
             reverse=True,
         )
 

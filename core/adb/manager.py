@@ -1,5 +1,3 @@
-from core.adb.adapter import ADBAdapter
-
 from core.adb.detector import DeviceDetector
 from core.adb.device import Device
 from core.logger.logger import logger
@@ -9,7 +7,7 @@ class DeviceManager:
 
     def __init__(self):
 
-        self.adapter = ADBAdapter()
+        self.detector = DeviceDetector()
 
     def connect(self):
 
@@ -32,9 +30,7 @@ class DeviceManager:
         best = devices[0]
 
         logger.info(
-            f"自动选择：{best.serial}"
+            f"自动连接：{best.serial}"
         )
 
-        adb_device = self.adapter.get_device(best.serial)
-
-        return Device(adb_device)
+        return Device(best.adb_device)
