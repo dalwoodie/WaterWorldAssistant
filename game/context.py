@@ -5,6 +5,7 @@ from core.resource.manager import ResourceManager
 
 from game.tasks import TaskManager
 from game.scene import SceneManager
+from core.vision import VisionService
 
 
 class GameContext:
@@ -20,6 +21,8 @@ class GameContext:
         self.device_manager = DeviceManager()
 
         self.resource = ResourceManager()
+
+        self.vision = VisionService(self)
 
         self.task_manager = TaskManager()
 

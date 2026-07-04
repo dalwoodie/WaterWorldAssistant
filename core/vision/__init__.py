@@ -1,2 +1,9 @@
 from .matcher import TemplateMatcher
-from .target import Target
+from .service import VisionService
+from .result import MatchResult
+
+__all__ = [
+    "TemplateMatcher",
+    "VisionService",
+    "MatchResult"
+]
