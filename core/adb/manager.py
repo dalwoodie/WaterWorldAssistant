@@ -1,39 +1,40 @@
 from adbutils import adb
 
+from core.adb.detector import DeviceDetector
 from core.adb.device import Device
 from core.logger.logger import logger
 
 
 class DeviceManager:
 
-    def list_devices(self):
+    def __init__(self):
 
-        return adb.device_list()
+        self.detector = DeviceDetector()
 
     def connect(self):
 
-        devices = self.list_devices()
+        devices = self.detector.scan()
 
         if not devices:
-
-            raise RuntimeError("没有找到ADB设备")
+            raise RuntimeError("没有发现ADB设备")
 
         logger.info("检测到ADB设备：")
 
         for index, device in enumerate(devices):
 
             logger.info(
-                f"[{index}] {device.serial}"
+                f"[{index}] "
+                f"{device.serial} "
+                f"({device.emulator}) "
+                f"score={device.score}"
             )
 
-        #
-        # 第一版默认连接第一个设备
-        #
-
-        adb_device = devices[0]
+        best = devices[0]
 
         logger.info(
-            f"连接设备：{adb_device.serial}"
+            f"自动选择：{best.serial}"
         )
+
+        adb_device = adb.device(best.serial)
 
         return Device(adb_device)
