@@ -1,7 +1,3 @@
-"""
-ADB设备管理
-"""
-
 from adbutils import adb
 
 from core.adb.device import Device
@@ -14,38 +10,30 @@ class DeviceManager:
 
         return adb.device_list()
 
-    def connect(self, serial=None):
+    def connect(self):
 
         devices = self.list_devices()
 
-        if len(devices) == 0:
+        if not devices:
 
-            raise RuntimeError("没有发现ADB设备")
+            raise RuntimeError("没有找到ADB设备")
 
-        logger.info("发现设备：")
+        logger.info("检测到ADB设备：")
 
-        for i, d in enumerate(devices):
+        for index, device in enumerate(devices):
 
-            logger.info(f"[{i}] {d.serial}")
-
-        #
-        # 自动连接
-        #
-
-        if serial is None:
-
-            device = devices[0]
-
-        else:
-
-            device = next(
-                d
-                for d in devices
-                if d.serial == serial
+            logger.info(
+                f"[{index}] {device.serial}"
             )
 
+        #
+        # 第一版默认连接第一个设备
+        #
+
+        adb_device = devices[0]
+
         logger.info(
-            f"连接设备：{device.serial}"
+            f"连接设备：{adb_device.serial}"
         )
 
-        return Device(device)
+        return Device(adb_device)

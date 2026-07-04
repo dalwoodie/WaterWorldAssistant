@@ -1,6 +1,4 @@
 adbutils
-opencv-python
-numpy
 Pillow
 PyYAML
 loguru

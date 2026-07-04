@@ -1,12 +1,3 @@
-"""
-设备对象
-
-负责：
-- 点击
-- 滑动
-- 截图
-"""
-
 from pathlib import Path
 
 
@@ -21,32 +12,21 @@ class Device:
 
         return self._device.serial
 
-    def tap(self, x: int, y: int):
+    def tap(self, x, y):
 
         self._device.shell(
             f"input tap {x} {y}"
         )
 
-    def swipe(
-        self,
-        x1: int,
-        y1: int,
-        x2: int,
-        y2: int,
-        duration: int = 300
-    ):
+    def screenshot(self, save_path):
 
-        self._device.shell(
-            f"input swipe {x1} {y1} {x2} {y2} {duration}"
-        )
+        save_path = Path(save_path)
 
-    def screenshot(self, path):
-
-        img = self._device.screenshot()
-
-        Path(path).parent.mkdir(
+        save_path.parent.mkdir(
             parents=True,
             exist_ok=True
         )
 
-        img.save(path)
+        image = self._device.screenshot()
+
+        image.save(save_path)

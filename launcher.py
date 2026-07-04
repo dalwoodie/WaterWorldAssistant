@@ -1,22 +1,21 @@
-from core.adb.manager import DeviceManager
-from core.logger.logger import logger
+from game.context import GameContext
 
 
 def main():
 
-    logger.info("WWA Start")
+    ctx = GameContext()
 
-    manager = DeviceManager()
+    device = ctx.connect_device()
 
-    device = manager.connect()
-
-    logger.info(
+    ctx.logger.info(
         f"当前设备：{device.serial}"
     )
 
     device.screenshot(
         "resources/screenshots/test.png"
     )
+
+    ctx.logger.info("截图完成")
 
 
 if __name__ == "__main__":

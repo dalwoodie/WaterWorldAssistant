@@ -1,7 +1,3 @@
-"""
-配置管理器
-"""
-
 from pathlib import Path
 
 import yaml
@@ -11,15 +7,15 @@ class ConfigManager:
 
     def __init__(self):
 
-        self.config_path = Path("config/config.yaml")
+        self.path = Path("config/config.yaml")
 
-        self.data = self.load()
+        with open(
+            self.path,
+            "r",
+            encoding="utf-8"
+        ) as f:
 
-    def load(self):
-
-        with open(self.config_path, encoding="utf-8") as f:
-
-            return yaml.safe_load(f)
+            self.data = yaml.safe_load(f)
 
     def get(self, *keys):
 
