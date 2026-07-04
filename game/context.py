@@ -3,6 +3,8 @@ from core.config.manager import ConfigManager
 from core.logger.logger import logger
 from core.resource.manager import ResourceManager
 
+from game.tasks import TaskManager
+
 
 class GameContext:
 
@@ -17,6 +19,8 @@ class GameContext:
         self.device_manager = DeviceManager()
 
         self.resource = ResourceManager()
+
+        self.task_manager = TaskManager()
 
         self.device = None
 
