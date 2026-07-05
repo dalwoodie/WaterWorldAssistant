@@ -41,6 +41,46 @@ class VisionService:
             threshold
         ).found
 
+    def exists_all(
+            self,
+            screenshot,
+            templates,
+            threshold=0.8
+    ):
+        """
+        所有模板均匹配成功才返回 True
+        """
+        for template in templates:
+
+            if not self.exists(
+                    screenshot,
+                    template,
+                    threshold
+            ):
+                return False
+
+        return True
+
+    def exists_any(
+            self,
+            screenshot,
+            templates,
+            threshold=0.8
+    ):
+        """
+        任意模板匹配成功即可返回 True
+        """
+        for template in templates:
+
+            if self.exists(
+                    screenshot,
+                    template,
+                    threshold
+            ):
+                return True
+
+        return False
+
     def wait(
             self,
             screenshot_getter,

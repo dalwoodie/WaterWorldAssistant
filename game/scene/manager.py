@@ -22,11 +22,16 @@ class SceneManager:
         ]
 
     def detect(self):
+        """
+        检测当前游戏场景
+        """
+
+        # 仅截图一次
+        screenshot = self.context.device.screenshot()
 
         for scene in self.scenes:
 
-            if scene.check():
-
+            if scene.check(screenshot):
                 self.current = scene
 
                 return scene

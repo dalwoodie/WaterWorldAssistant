@@ -1,17 +1,26 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class BaseScene(ABC):
+    """场景基类"""
 
+    # 场景名称
     name = "Unknown"
 
-    def __init__(self, context):
+    # 当前场景的识别模板
+    anchors = []
 
+    def __init__(self, context):
+        """
+        初始化场景
+        """
         self.context = context
 
-    @abstractmethod
-    def check(self) -> bool:
+    def check(self, screenshot):
         """
-        判断当前是否属于该场景
+        判断当前截图是否属于本场景
         """
-        pass
+        return self.context.vision.exists_all(
+            screenshot,
+            self.anchors
+        )

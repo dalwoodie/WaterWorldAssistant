@@ -5,5 +5,5 @@ class UnknownScene(BaseScene):
 
     name = "Unknown"
 
-    def check(self) -> bool:
+    def check(self, screenshot):
         return True
