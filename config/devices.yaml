@@ -1,2 +1,7 @@
-device:
-  serial: ""
+devices:
+
+  auto_connect: true
+
+  default_serial: ""
+
+  reconnect: true

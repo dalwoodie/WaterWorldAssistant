@@ -2,7 +2,7 @@ __pycache__/
 *.pyc
 
 logs/*
-resources/screenshots/*
+assets/screenshots/*
 
 .vscode/
 .idea/

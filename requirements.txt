@@ -1,6 +1,9 @@
-adbutils
-Pillow
-PyYAML
-loguru
-opencv-python
-numpy
+opencv-python>=4.9
+
+numpy>=1.26
+
+PyYAML>=6.0
+
+rapidocr-onnxruntime>=1.4
+
+onnxruntime>=1.18

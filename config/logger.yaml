@@ -1,0 +1,9 @@
+logger:
+
+  console: true
+
+  file: true
+
+  level: INFO
+
+  folder: logs

@@ -1,9 +1,23 @@
-from .matcher import TemplateMatcher
-from .service import VisionService
-from .result import MatchResult
+"""
+Vision模块
 
-__all__ = [
-    "TemplateMatcher",
-    "VisionService",
-    "MatchResult"
-]
+统一导出：
+
+VisionEngine
+
+VisionResult
+
+OCRBox
+
+ImageUtil
+
+VisionCache
+
+Region
+"""
+
+from .detector import VisionEngine
+from .image import ImageUtil
+from .result import VisionResult, OCRBox
+from .cache import VisionCache
+from .region import Region, Regions

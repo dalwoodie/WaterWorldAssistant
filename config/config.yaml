@@ -1,5 +1,29 @@
-debug: true
+app:
 
-game:
-  width: 1280
-  height: 720
+  name: WaterWorldAssistant
+
+  version: 0.1.2
+
+  debug: true
+
+adb:
+
+  # adb.exe路径
+  #
+  # 推荐：
+  # tools/adb/adb.exe
+  #
+  # 留空表示使用系统PATH
+  executable: "D:\\mumu\\MuMuPlayer\\nx_device\\12.0\\shell\\adb.exe"
+
+device:
+
+  default_serial: ""
+
+vision:
+
+  confidence: 0.85
+
+log:
+
+  level: INFO

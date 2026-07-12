@@ -1,0 +1,15 @@
+template:
+
+  default_threshold: 0.85
+
+  max_scale: 1.0
+
+ocr:
+
+  language:
+
+    - ch
+
+    - en
+
+  gpu: false
